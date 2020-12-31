@@ -1,0 +1,99 @@
+#!/bin/sh
+echo "<<<-------------𖤍-firas-𖤍------------->>>"
+echo "             <<-instagram->> "
+echo "<<<<<<<<<<<<<<<<< fyst_14 >>>>>>>>>>>>>>>>"
+echo "youtube-dl -version"
+youtube-dl --version
+if [ $? -eq 0 ]; then
+	echo "starting"
+	echo "❤~enter the url here to see the possible formats~❤"
+	echo "__________________|"
+	echo "V"
+	read u
+	while [ $u -1 ];
+	do
+	        echo "---you must put a url---"
+	        read u
+	done
+	youtube-dl -F "$u"
+	if [ $? -eq 0 ]; then
+		echo "you want to download_"
+		echo " 1=audio 2=video  <-|-> default is "1">>audio for video type 2"
+		read h
+		if [ $h -eq 2 ]; then
+			youtube-dl "$u"
+		else
+			echo "❤~enter your format here~❤"
+			echo "______________________|-> you can leave this blank-> recommended 'm4a'"
+			echo "V"
+			read a
+			if [ $a  -1  ]; then
+				youtube-dl -x "$u"
+	                else
+				youtube-dl --audio-format "$a" -x "$u"
+			fi
+			echo "<<<<<<<<<done>>>>>>>>>"
+			echo "<<<<<<<enjoy ❤❤❤>>>>>>>"
+		fi
+	else
+		echo ""
+		echo ""
+		echo '<<< sorry you'r url isn't valid >>>'
+		echo "        ~~~~~~bye~~~~~~"
+	fi
+else 
+	echo "-- youtube-dl isn't installed"
+	echo "will start youtube-dl installation in"
+	echo "4"
+	sleep 1
+	echo "3"
+	sleep 1
+	echo "2"
+	sleep 1
+	echo "1"
+	sleep 1
+	echo "trying to install youtube-dl"
+	sudo apt-get install youtube-dl
+	if [ $? -eq 0 ]; then
+		echo "youtube-dl installed successfuly"
+		echo "❤~enter the url here to see the possible formats~❤"
+		echo "__________________|"
+		echo "V"
+		read u
+		while [ $u -1  ];
+		do
+	        	echo "---you must put a url---"
+	        	read u
+		done
+		youtube-dl -F "$u"
+		if [ $? -eq 0 ]; then
+			echo "you want to download_"
+			echo " 1=audio 2=video  <-|-> default is "1">>audio for video type 2"
+			read h
+			if [ $h -eq 2 ]; then
+				youtube-dl "$u"
+			else
+				echo "❤~enter your format here~❤"
+				echo "______________________|->you can leave this blank->recommended'm4a'"
+				echo "V"
+				read a
+				if [ $a  -1  ]; then
+					youtube-dl -x "$u"
+                		else
+					youtube-dl --audio-format "$a" -x "$u"
+				fi
+			echo "<<<<<<<<<done>>>>>>>>>"
+			echo "<<<<<<<enjoy ❤❤❤>>>>>>>"
+			fi
+		else
+			echo ""
+			echo ""
+			echo '<<< sorry you'r url isn't valid >>>'
+			echo "        ~~~~~~bye~~~~~~"
+		fi
+	else
+		echo "sorry i couldn't install it for you"
+		echo "you have to do it manualy with 'sudo apt install youtube-dl' "
+		echo "                 !~~~~~~bye~~~~~!"
+	fi
+fi

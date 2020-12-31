@@ -1,6 +1,5 @@
 # ytdown
-simple script to easily download  based on youtube-dl youtube audio&amp;video
-
+simple shell script to easily install youtube videos&audio using youtube-dl
 # installation
 git clone https://github.com/firashacker/ytdown.git &&
 cd ytdown &&
